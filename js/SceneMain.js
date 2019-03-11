@@ -86,7 +86,7 @@ class SceneMain extends Phaser.Scene {
       255
     );
     this.player.play('sprPlayer')
-    // this.player.setPipeline('Custom');
+    this.player.setPipeline('Custom');
     
     this.time.addEvent({
       delay: 800,
@@ -95,7 +95,9 @@ class SceneMain extends Phaser.Scene {
         this.emitter = this.particles.createEmitter({
             speed: 20,
             scale: { start: 0.3, end: 0 },
-            blendMode: 'ADD'
+            blendMode: 'ADD',
+            delay:500,
+            frequency:400
         });
         this.emitter.startFollow(this.player)
         this.children.bringToTop(this.player)
