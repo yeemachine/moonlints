@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Moonslint</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="https://cdn.glitch.com/8292bab2-737d-4b03-970a-80900ba21761%2Fblueowl%20clone-2.png.png?1552276986950">
+
+    
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    <!-- import the webpage's javascript file -->
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.16.2/dist/phaser.min.js"></script>
+    <script src="https://magicblue.glitch.me/builds/magicblue.js"></script>
+    <script src="js/cursor.js"></script>
+  </head>  
+  <body>
+    <div id="cursor" class="idle">
+      <svg height="100%" width="100%" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="40" stroke="#fff" stroke-width="2" fill="none" />
+      </svg>
+      <div class="radialValue">
+        
+      </div>
+    </div>
+    <nav>
+       <div class="buttons">
+<!--         <button class="info">
+          <i class="material-icons">info</i>
+        </button> -->
+         <div class="bluetooth">
+          <button class="connect-button">
+            <i class="material-icons">lightbulb</i>
+          </button>
+           <div class="devices">
+            </div> 
+         </div>
+      
+  
+      </div>   
+    </nav>
+    <div style="font-family:Blue Owl; position:absolute; left:-1000px; visibility:hidden;">.</div>
+    <div id = "gameDiv"></div>
+  </body>
+    <script>
+    magicblue.init('.connect-button')
+
+
+//Device Connected
+magicblue.on('connected', (deviceName) => {
+  console.log(deviceName + ' is connected.');
+  document.querySelector('.devices').innerHTML = Object.keys(magicblue.devices).join(', ')
+});
+
+
+
+
+
+
+
+    </script>
+    <script src="plugins/resize.js"></script>
+    <script src="https://moonlints.glitch.me/js/Entities.js"></script>
+<!--     <script src="js/Entities.js"></script> -->
+    <script src="js/SceneMain.js"></script>
+    <script src="js/SceneMainMenu.js"></script>
+    <script src="js/SceneGameOver.js"></script>
+    <script src="js/game.js"></script>
+</html>
