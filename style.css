@@ -204,4 +204,7 @@ button:focus {outline:0;}
   .buttons div.bluetooth{
     display:none;
   }
+  nav{
+    display:none;
+  }
 }
