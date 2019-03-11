@@ -66,11 +66,6 @@ class SceneMain extends Phaser.Scene {
       laser: this.sound.add("sndLaser",{volume: 0.03})
     };
 
-    // this.backgrounds = [];
-    // for (var i = 0; i < 5; i++) {
-    //   // var bg = new ScrollingBackground(this, "sprBg0", i * 10);
-    //   // this.backgrounds.push(bg);
-    // }
     this.bg = new Background(this,this.game.config.width*0.5, 0,'nichelsonStatic','static',[0xff33ff,0xff0000,0xff00ff,0x000033])
     this.bg.setAlpha(0)
 
@@ -81,6 +76,8 @@ class SceneMain extends Phaser.Scene {
         duration    : 800,
     });
     
+    
+    
     this.player = new Player(
       this,
       this.game.config.width * 0.5,
@@ -89,7 +86,22 @@ class SceneMain extends Phaser.Scene {
       255
     );
     this.player.play('sprPlayer')
-    this.player.setPipeline('Custom');
+    // this.player.setPipeline('Custom');
+    
+    this.time.addEvent({
+      delay: 800,
+      callback: function() {
+        this.particles = this.add.particles('white');
+        this.emitter = this.particles.createEmitter({
+            speed: 20,
+            scale: { start: 0.3, end: 0 },
+            blendMode: 'ADD'
+        });
+        this.emitter.startFollow(this.player)
+        this.children.bringToTop(this.player)
+      },
+      callbackScope: this
+    });
     
     this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
