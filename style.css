@@ -1,0 +1,207 @@
+@font-face {
+    font-family: "Blue Owl";
+    src: url('https://cdn.glitch.com/8292bab2-737d-4b03-970a-80900ba21761%2Fblueowl.ttf?1552171970095') format("truetype");
+}
+body {
+  background: #000;
+  position:absolute;
+  margin:0;
+  width:100vw;
+  height:100vh;
+  overflow:hidden;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family: 'Blue Owl';
+  cursor:none;
+  font-size:24px;
+  text-transform:uppercase;
+}
+
+#cursor{
+  --cursorSize:30px;
+  position:absolute;
+  width:var(--cursorSize);
+  height:var(--cursorSize);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+  pointer-events:none;
+  color:#fff;
+  font-size:48px;
+}
+#cursor svg{
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  margin:auto;
+  z-index:-1
+}
+#cursor.idle{opacity:0}
+#cursor.hover circle{
+/*   stroke:none; */
+}
+.radialValue{
+  margin-top:-80px;
+  font-weight:900;
+}
+.hide {
+  opacity: 0;
+  pointer-events: none
+}
+/*Temporary Hide*/
+.schedule,.dimmer,.effect{
+  display:none;
+}
+label{
+  font-size:12px;
+  opacity:0.5
+}
+nav{
+  display:flex;
+  justify-content:flex-start;
+  align-items:flex-start;
+/*   width:97vw; */
+  padding:1.5vw;
+  position:fixed;
+  bottom:0;
+  left:0;
+  z-index:998;
+}
+.buttons{
+ margin-right:1.5vw; 
+  display:flex;
+  flex-direction:column;
+}
+.buttons div{
+  position:relative;
+  display:flex;
+}
+.effects container.hide{
+  opacity:0;
+  pointer-events:none;
+  left:calc(40px + 1.5vw);
+}
+.effects container{
+  position:absolute;
+  top:0px;
+  left:calc(48px + 1.5vw);
+  width:20vw;
+  transition:0.2s;
+  display:flex;
+  flex-wrap:wrap;
+  align-content:flex-start;
+}
+.effects container label{
+  width:100%;
+  margin:0 0 4px 0;
+}
+.effects container p{
+  margin:0;
+  padding:0;
+  width:100%;
+}
+.effects container div{
+    width:48px;
+    height:48px;
+    margin:0 8px 8px 0;
+    background: rgba(255,255,255,0.05);
+    border-radius:50%;
+    overflow:hidden;
+}
+.effects container div:hover{
+    background: rgba(0,0,0,0.15);
+}
+.effects container div svg{
+  transition: transform 0.2s
+}
+.effects container div:hover svg{
+  transform:scale(1.75)
+}
+button.connect-button{
+  opacity:1;
+  pointer-events:all
+}
+button{
+    font-size: 12px;
+    margin: 0 0 15px 0;
+    width: 48px;
+    height: 48px;
+    padding:0;
+    margin: 0 1.5vw 0 0;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    transition:0.2s;
+    cursor:none;
+}
+button:hover{
+  background: rgba(255,255,255,1);
+  color: #222;
+  cursor:none;
+}
+button i{
+}
+button:focus {outline:0;}
+.devices{
+  display: flex;
+  flex-direction: column;
+}
+.devices>div{
+  display:flex;
+}
+.devices>div>div{
+  text-decoration: line-through;
+  opacity:0.5;
+}
+.devices>div>div:hover{
+  opacity:1;
+}
+.devices>div>div.selected{
+  text-decoration: none;
+  opacity:1;
+}
+.devices .divider{
+  margin:0 5px 0 0;
+  text-decoration: none;
+}
+#mainControls{
+  --controlWidth:80vw;
+  --maxHeight:70vh;
+  width:var(--maxHeight);
+  height:var(--maxHeight);
+  position: relative;
+}
+.eyeContainer{
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  margin:auto;
+  width:calc(var(--maxHeight)*0.2);
+  height:calc(var(--maxHeight)*0.2);
+  padding:calc(var(--maxHeight)*0.03125);
+  border-radius:50%;
+  background-color:rgba(255,255,255,0.05);
+}
+
+@media only screen and (max-width: 800px) {
+  #mainControls{
+  width:var(--controlWidth);
+  height:var(--controlWidth);
+  }
+  .eyeContainer{
+  width:calc(var(--controlWidth)*0.2);
+  height:calc(var(--controlWidth)*0.2);
+  padding:calc(var(--controlWidth)*0.03125);
+  }
+  
+}
+@media only screen and (max-width: 400px) {
+  .bluetooth{
+    display:none;
+  }
+}
