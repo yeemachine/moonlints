@@ -200,11 +200,8 @@ button:focus {outline:0;}
   }
   
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 600px) {
   .buttons div.bluetooth{
-    display:none;
-  }
-  nav{
     display:none;
   }
 }
