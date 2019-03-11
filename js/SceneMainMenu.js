@@ -47,6 +47,7 @@ class SceneMainMenu extends Phaser.Scene {
     this.load.image("sprBtnRestartDown", "https://cdn.glitch.com/8292bab2-737d-4b03-970a-80900ba21761%2FsprBtnRestartDown.png?1550724437872");
     this.load.audio("sndBtnOver", "https://cdn.glitch.com/8292bab2-737d-4b03-970a-80900ba21761%2FsndBtnOver.wav?1550724438330");
     this.load.audio("sndBtnDown", "https://cdn.glitch.com/8292bab2-737d-4b03-970a-80900ba21761%2FsndBtnDown.wav?1550724438255");
+    this.load.image('white', 'https://cdn.glitch.com/8292bab2-737d-4b03-970a-80900ba21761%2Fwhite.png?1552328865713');
     
     this.load.image("sprLaserPlayer", "https://cdn.glitch.com/8292bab2-737d-4b03-970a-80900ba21761%2FsprLaserPlayer.png?1550724437948");
     this.load.spritesheet("sprPlayer", "https://cdn.glitch.com/8292bab2-737d-4b03-970a-80900ba21761%2Fblueowl.png?1552229204371", {
@@ -106,7 +107,12 @@ class SceneMainMenu extends Phaser.Scene {
       align: 'center'
     });
     
-
+    this.particles = this.add.particles('white');
+    this.emitter = this.particles.createEmitter({
+        speed: 40,
+        scale: { start: 0.3, end: 0 },
+        blendMode: 'ADD'
+    });
 
     this.bg2 = new Background(this,this.game.config.width*0.5, 0,'nichelsonStatic','static',[0x000000,0x000000,0x000000,0x000000])
     this.bg2.setAlpha(0)
@@ -114,13 +120,16 @@ class SceneMainMenu extends Phaser.Scene {
     this.player = new Player(
       this,
       this.game.config.width * 0.5 - this.title.width * 0.225,
-      this.game.config.height * 0.35,
+      this.game.config.height * 0.335,
       "sprPlayer",
       255
     );
     this.player.setScale(1.3);
-    this.player.setPipeline('Custom');
+    // this.player.setPipeline('Custom');
     this.player.play('sprPlayerIdle')
+    
+ 
+    this.emitter.startFollow(this.player)
     
     if(this.game.config.width < 600){
       this.title.scaleX = this.game.config.width/this.title.width * 0.7
