@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Blue Owl";
-    src: url('https://cdn.glitch.com/8292bab2-737d-4b03-970a-80900ba21761%2Fblueowl.ttf?1552171970095') format("truetype");
+    src: url('https://cdn.glitch.com/8292bab2-737d-4b03-970a-80900ba21761%2Fblueowl3.ttf?1552325269103') format("truetype");
 }
 body {
   background: #000;
@@ -201,7 +201,7 @@ button:focus {outline:0;}
   
 }
 @media only screen and (max-width: 400px) {
-  .bluetooth{
+  .buttons div.bluetooth{
     display:none;
   }
 }
