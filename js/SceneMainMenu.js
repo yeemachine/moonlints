@@ -96,8 +96,6 @@ class SceneMainMenu extends Phaser.Scene {
     
     this.title.setOrigin(0.5);
     this.title.setPipeline('Custom');
-
-    
     let today = new Date().toLocaleDateString("en-US")
     let version = (today === '3/11/2019') ? 'HAPPY BIRTHDAY ALEX' : 'V 1.0.1'
     this.version = this.add.text(this.game.config.width * 0.5 - this.title.width * 0.5, this.game.config.height * 0.44, version, {
@@ -127,6 +125,7 @@ class SceneMainMenu extends Phaser.Scene {
     if(this.game.config.width < 600){
       this.title.scaleX = this.game.config.width/this.title.width * 0.7
       this.title.scaleY = this.title.scaleX
+      
       
       this.version.x = this.game.config.width * 0.15
       this.version.y = this.game.config.height * 0.4
