@@ -91,13 +91,13 @@ class SceneMain extends Phaser.Scene {
     this.time.addEvent({
       delay: 800,
       callback: function() {
-        this.particles = this.add.particles('white');
+        this.particles = this.add.particles('red');
         this.emitter = this.particles.createEmitter({
             speed: 20,
             scale: { start: 0.3, end: 0 },
             blendMode: 'ADD',
             delay:500,
-            frequency:400
+            frequency:200
         });
         this.emitter.startFollow(this.player)
         this.children.bringToTop(this.player)

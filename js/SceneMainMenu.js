@@ -48,6 +48,8 @@ class SceneMainMenu extends Phaser.Scene {
     this.load.audio("sndBtnOver", "https://cdn.glitch.com/8292bab2-737d-4b03-970a-80900ba21761%2FsndBtnOver.wav?1550724438330");
     this.load.audio("sndBtnDown", "https://cdn.glitch.com/8292bab2-737d-4b03-970a-80900ba21761%2FsndBtnDown.wav?1550724438255");
     this.load.image('white', 'https://cdn.glitch.com/8292bab2-737d-4b03-970a-80900ba21761%2Fwhite.png?1552328865713');
+    this.load.image('red', 'https://cdn.glitch.com/8292bab2-737d-4b03-970a-80900ba21761%2Fred.png?1552328322052');
+
     
     this.load.image("sprLaserPlayer", "https://cdn.glitch.com/8292bab2-737d-4b03-970a-80900ba21761%2FsprLaserPlayer.png?1550724437948");
     this.load.spritesheet("sprPlayer", "https://cdn.glitch.com/8292bab2-737d-4b03-970a-80900ba21761%2Fblueowl.png?1552229204371", {
@@ -108,7 +110,7 @@ class SceneMainMenu extends Phaser.Scene {
     });
     
    
-    this.particles = this.add.particles('white');
+    this.particles = this.add.particles('red');
     this.emitter = this.particles.createEmitter({
         speed: 40,
         scale: { start: 0.4, end: 0 },
