@@ -59,6 +59,9 @@ class SceneMainMenu extends Phaser.Scene {
     this.load.audio("sndExplode0", "https://cdn.glitch.com/8292bab2-737d-4b03-970a-80900ba21761%2FsndExplode0.wav?1550724438413");
     this.load.audio("sndExplode1", "https://cdn.glitch.com/8292bab2-737d-4b03-970a-80900ba21761%2FsndExplode1.wav?1550724438531");
     this.load.audio("sndLaser", "https://cdn.glitch.com/8292bab2-737d-4b03-970a-80900ba21761%2FsndLaser.wav?1550724438653");
+    
+    var url = 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/plugins/dist/rexvirtualjoystickplugin.min.js';
+    this.load.plugin('rexvirtualjoystickplugin', url, true);
   }
   create() {
 
@@ -165,28 +168,28 @@ class SceneMainMenu extends Phaser.Scene {
       this.sfx.btnDown.play(); // play the button over sound
     },this)
 
-    this.title.on("pointerup", function() {
-      this.player.play('sprPlayerSpin')
-      this.tweens.add({
-        targets : this.player ,
-        scaleX: 1,
-        scaleY: 1,
-        x : this.game.config.width * 0.5, 
-        y : this.game.config.height * 0.75,
-        ease : 'Sine.easeInOut',
-        duration : 800,
-      });
-      this.tweens.add({
-        targets     : this.bg2,
-        alpha       : 1,
-        ease        : 'Sine.easeInOut',
-        duration    : 800,
-      });
+//     this.title.on("pointerup", function() {
+//       this.player.play('sprPlayerSpin')
+//       this.tweens.add({
+//         targets : this.player ,
+//         scaleX: 1,
+//         scaleY: 1,
+//         x : this.game.config.width * 0.5, 
+//         y : this.game.config.height * 0.75,
+//         ease : 'Sine.easeInOut',
+//         duration : 800,
+//       });
+//       this.tweens.add({
+//         targets     : this.bg2,
+//         alpha       : 1,
+//         ease        : 'Sine.easeInOut',
+//         duration    : 800,
+//       });
 
-      this.player.on('animationcomplete', function(){
-        this.scene.start("SceneMain");
-      }, this);
-    }, this);
+//       this.player.on('animationcomplete', function(){
+//         this.scene.start("SceneMain");
+//       }, this);
+//     }, this);
     
     
       let originalText = this.title._text
@@ -254,3 +257,4 @@ class SceneMainMenu extends Phaser.Scene {
     pipelineTime += 0.005;
   }
 }
+

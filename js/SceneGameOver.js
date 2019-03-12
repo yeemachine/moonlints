@@ -47,19 +47,7 @@ class SceneGameOver extends Phaser.Scene {
     },this)
 
     this.title.on("pointerup", function() {
-      this.tweens.add({
-        targets     : this.bg2,
-        alpha       : 1,
-        ease        : 'Sine.easeInOut',
-        duration    : 800,
-      });
-      let fadeOut = this.time.addEvent({
-        delay:1200,
-        callback: function() {
-          this.scene.start("SceneMain");
-        },
-        callbackScope: this,
-      })  
+  
     }, this);
 
     
