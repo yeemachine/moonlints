@@ -102,6 +102,15 @@ class SceneMainMenu extends Phaser.Scene {
     
     this.title.setOrigin(0.5);
     this.title.setPipeline('Custom');
+    this.instructions = this.add.text(this.game.config.width * 0.5, this.game.config.height * 0.95, "CLICK OR TAP TO BEGIN", {
+      fontFamily: 'Blue Owl',
+      fontSize: 24,
+      fontStyle: 'bold',
+      color: '#ffffff',
+      align: 'center'
+    });
+    
+    this.instructions.setOrigin(0.5);
     let today = new Date().toLocaleDateString("en-US")
     let version = (today === '3/11/2019') ? 'HAPPY BIRTHDAY ALEX' : 'V 1.0.1'
     this.version = this.add.text(this.game.config.width * 0.5 - this.title.width * 0.5, this.game.config.height * 0.44, version, {
