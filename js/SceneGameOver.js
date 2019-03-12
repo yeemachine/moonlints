@@ -17,7 +17,14 @@ class SceneGameOver extends Phaser.Scene {
     });
     this.title.setOrigin(0.5);
     this.title.setPipeline('Custom');
-  
+    this.instructions = this.add.text(this.game.config.width * 0.5, this.game.config.height * 0.95, "CLICK OR TAP TO RETRY", {
+      fontFamily: 'Blue Owl',
+      fontSize: 24,
+      fontStyle: 'bold',
+      color: '#ffffff',
+      align: 'center'
+    });
+    this.instructions.setOrigin(0.5);
     if(this.game.config.width < 600){
       this.title.scaleX = this.game.config.width/this.title.width * 0.7
       this.title.scaleY = this.title.scaleX

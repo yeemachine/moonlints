@@ -109,7 +109,6 @@ class SceneMainMenu extends Phaser.Scene {
       color: '#ffffff',
       align: 'center'
     });
-    
     this.instructions.setOrigin(0.5);
     let today = new Date().toLocaleDateString("en-US")
     let version = (today === '3/11/2019') ? 'HAPPY BIRTHDAY ALEX' : 'V 1.0.1'
