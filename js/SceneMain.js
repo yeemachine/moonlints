@@ -88,6 +88,20 @@ class SceneMain extends Phaser.Scene {
     this.player.play('sprPlayer')
     this.player.setPipeline('Custom');
     
+    if(this.game.config.width < 600){
+      this.joyStick = this.plugins.get('rexvirtualjoystickplugin').add(this, {
+        x: this.game.config.width*0.5,
+        y: this.game.config.height*0.9,
+        radius: 40,
+        base: this.add.graphics().fillStyle(0x888888).setAlpha(0.3).fillCircle(0, 0, 40),
+        thumb: this.add.graphics().fillStyle(0xcccccc).setAlpha(0.9).fillCircle(0, 0,20),
+        // dir: '8dir',   // 'up&down'|0|'left&right'|1|'4dir'|2|'8dir'|3
+        // forceMin: 16,
+        // enable: true
+      })
+    }
+
+    
     this.time.addEvent({
       delay: 800,
       callback: function() {
@@ -270,6 +284,28 @@ class SceneMain extends Phaser.Scene {
 
     if (!this.player.getData("isDead")) {
       this.player.update();
+      if(typeof this.joyStick !== 'undefined'){
+        let angle = this.joyStick.angle
+        if (angle !== 0){
+          let x = this.player.getData('speed') * Math.cos(angle * Math.PI/180)
+          let y = this.player.getData('speed') * Math.sin(angle * Math.PI/180)
+          this.player.body.setVelocity(x,y)
+          this.player.setData("isShooting", true);
+          console.log(this.player)
+        }else{
+          this.player.setData("timerShootTick", this.player.getData("timerShootDelay") - 1);
+          this.player.setData("isShooting", false);
+        }
+      }else{
+        if (this.keySpace.isDown) {
+          this.player.setData("isShooting", true);
+        }
+        else {
+          this.player.setData("timerShootTick", this.player.getData("timerShootDelay") - 1);
+          this.player.setData("isShooting", false);
+        }
+      }
+ 
       if (this.keyW.isDown) {
         this.player.moveUp();
       }
@@ -283,13 +319,7 @@ class SceneMain extends Phaser.Scene {
         this.player.moveRight();
       }
 
-      if (this.keySpace.isDown) {
-        this.player.setData("isShooting", true);
-      }
-      else {
-        this.player.setData("timerShootTick", this.player.getData("timerShootDelay") - 1);
-        this.player.setData("isShooting", false);
-      }
+   
     }
 
     

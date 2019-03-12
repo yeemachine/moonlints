@@ -70,13 +70,62 @@ let config = {
 
 const game = new Phaser.Game(config);
 
-let resize = () => {
-  game.scene.scenes.forEach((e,i)=>{
-    e.game.config.width = window.innerWidth
-    e.game.config.height = window.innerHeight
-    console.log(window.innerWidth,e.game.config.width)
-  })
-  console.log(game.scene.scenes[1])
+let startGame = () => {
+  let mainMenuActive = game.scene.isActive('SceneMainMenu');
+  let gameOverActive = game.scene.isActive('SceneGameOver');
+  let mainMenu = game.scene.scenes[0]
+  let mainScene = game.scene.scenes[1]
+  let gameOver = game.scene.scenes[2]
+  
+  if(mainMenuActive === true){
+    mainMenu.player.play('sprPlayerSpin')
+    mainMenu.tweens.add({
+      targets : mainMenu.player ,
+      scaleX: 1,
+      scaleY: 1,
+      x : mainMenu.game.config.width * 0.5, 
+      y : mainMenu.game.config.height * 0.75,
+      ease : 'Sine.easeInOut',
+      duration : 800,
+    });
+    mainMenu.tweens.add({
+      targets     : mainMenu.bg2,
+      alpha       : 1,
+      ease        : 'Sine.easeInOut',
+      duration    : 800,
+    });
+
+    mainMenu.player.on('animationcomplete', function(){
+      this.scene.start("SceneMain");
+    }, mainMenu);    
+  }
+  
+  if(gameOverActive === true){
+    gameOver.tweens.add({
+      targets     : gameOver.bg2,
+      alpha       : 1,
+      ease        : 'Sine.easeInOut',
+      duration    : 800,
+    });
+    let fadeOut = gameOver.time.addEvent({
+      delay:1200,
+      callback: function() {
+        this.scene.start("SceneMain");
+      },
+      callbackScope: gameOver,
+    })  
+  }
 }
-window.addEventListener("resize", resize, false);
+document.querySelector('#gameDiv').addEventListener("click", startGame);
+document.querySelector('#gameDiv').addEventListener("touchstart", startGame);
+
+// let resize = () => {
+//   game.scene.scenes.forEach((e,i)=>{
+//     e.game.config.width = window.innerWidth
+//     e.game.config.height = window.innerHeight
+//     console.log(window.innerWidth,e.game.config.width)
+//   })
+//   console.log(game.scene.scenes[1])
+// }
+// window.addEventListener("resize", resize, false);
 
