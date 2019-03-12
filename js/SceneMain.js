@@ -1,4 +1,4 @@
-
+let score = 0
 
 class SceneMain extends Phaser.Scene {
   constructor() {
@@ -26,7 +26,7 @@ class SceneMain extends Phaser.Scene {
   }
   create() {
     magicblue.setWhite(255)
-
+    
     this.anims.create({
       key: "sprEnemy0",
       frames: this.anims.generateFrameNumbers("sprEnemy0"),
@@ -75,6 +75,15 @@ class SceneMain extends Phaser.Scene {
         ease        : 'Sine.easeInOut',
         duration    : 800,
     });
+    
+    this.score = this.add.text(30, 10, "00000000", {
+      fontFamily: 'Blue Owl',
+      fontSize: 24,
+      fontStyle: 'bold',
+      color: '#ffffff',
+      align: 'center'
+    });
+    score = 0
     
     
     
@@ -188,7 +197,14 @@ class SceneMain extends Phaser.Scene {
     this.physics.add.overlap(this.playerLasers, this.enemies, function(playerLaser, enemy) {
       if (enemy) {
         let enemy_hp = enemy.getData("hp") - 1
+        score = score + 1
+        let pad = "00000000";
+        var n = score.toString();
+        var result = (pad+n).slice(-pad.length);
         enemy.setData('hp', enemy_hp - 1)
+        enemy.scene.score.setText(result)
+        
+
         
         if(!enemy.getData("isDead") && enemy.getData('type') === 'SingleLetter' && enemy.getData('animating') === false){
           enemy.setData('animating',true)

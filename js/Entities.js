@@ -44,7 +44,7 @@ class Player extends Entity {
     this.setData("hp", hp);
     this.setData("speed", 200);
     this.setData("isShooting", false);
-    this.setData("timerShootDelay", 1);
+    this.setData("timerShootDelay", 3);
     this.setData("timerShootTick", this.getData("timerShootDelay") - 1);
     
   }
