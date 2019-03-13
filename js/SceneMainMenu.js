@@ -91,6 +91,7 @@ class SceneMainMenu extends Phaser.Scene {
       repeat: -1
     });
     this.bg = new Background(this,this.game.config.width*0.5, 0,'nichelson','dynamic',[0xff33ff,0xff0000,0xff00ff,0x0000ff])
+    this.bg.setAlpha()
     
     this.title = this.add.text(this.game.config.width * 0.5, this.game.config.height * 0.35, "M O O N L I N T S", {
       fontFamily: 'Blue Owl',
@@ -103,7 +104,7 @@ class SceneMainMenu extends Phaser.Scene {
     
     this.title.setOrigin(0.5);
     this.title.setPipeline('Custom');
-    this.instructions = this.add.text(this.game.config.width * 0.5, this.game.config.height * 0.95, "CLICK OR TAP TO BEGIN", {
+    this.instructions = this.add.text(this.game.config.width * 0.5, this.game.config.height * 0.925, "CLICK OR TAP TO BEGIN", {
       fontFamily: 'Blue Owl',
       fontSize: 24,
       fontStyle: 'bold',
@@ -112,7 +113,7 @@ class SceneMainMenu extends Phaser.Scene {
     });
     this.instructions.setOrigin(0.5);
     let today = new Date().toLocaleDateString("en-US")
-    let version = (today === '3/11/2019') ? 'HAPPY BIRTHDAY ALEX' : 'V 1.0.1'
+    let version = (today === '3/11/2019') ? 'HAPPY BIRTHDAY ALEX' : 'V 1.0.3'
     this.version = this.add.text(this.game.config.width * 0.5 - this.title.width * 0.5, this.game.config.height * 0.35 + this.title.height * 0.5, version, {
       fontFamily: 'Blue Owl',
       fontSize: 24,
@@ -154,6 +155,8 @@ class SceneMainMenu extends Phaser.Scene {
       this.version.y = this.game.config.height * 0.35 + this.title.height * 0.3
       this.player.y = this.game.config.height * 0.35 - this.title.height * .7
       this.player.x = this.game.config.width * 0.5 - this.title.width * 0.120
+    }else{
+      this.instructions.setText('CLICK OR TAP TO BEGIN\nARROWS OR WASD TO MOVE, SPACE TO SHOOT')
     }
 
     this.sfx = {
