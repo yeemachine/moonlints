@@ -95,6 +95,7 @@ class SceneMainMenu extends Phaser.Scene {
     this.title = this.add.text(this.game.config.width * 0.5, this.game.config.height * 0.35, "M O O N L I N T S", {
       fontFamily: 'Blue Owl',
       fontSize: 128,
+      baselineY: 0.085,
       fontStyle: 'bold',
       color: '#ffffff',
       align: 'center'
@@ -112,7 +113,7 @@ class SceneMainMenu extends Phaser.Scene {
     this.instructions.setOrigin(0.5);
     let today = new Date().toLocaleDateString("en-US")
     let version = (today === '3/11/2019') ? 'HAPPY BIRTHDAY ALEX' : 'V 1.0.1'
-    this.version = this.add.text(this.game.config.width * 0.5 - this.title.width * 0.5, this.game.config.height * 0.44, version, {
+    this.version = this.add.text(this.game.config.width * 0.5 - this.title.width * 0.5, this.game.config.height * 0.35 + this.title.height * 0.5, version, {
       fontFamily: 'Blue Owl',
       fontSize: 24,
       fontStyle: 'bold',
@@ -135,7 +136,7 @@ class SceneMainMenu extends Phaser.Scene {
     this.player = new Player(
       this,
       this.game.config.width * 0.5 - this.title.width * 0.225,
-      this.game.config.height * 0.335,
+      this.game.config.height * 0.35 - this.title.height * 1,
       "sprPlayer",
       255
     );
@@ -149,10 +150,9 @@ class SceneMainMenu extends Phaser.Scene {
       this.title.scaleX = this.game.config.width/this.title.width * 0.7
       this.title.scaleY = this.title.scaleX
       
-      
-      this.version.x = this.game.config.width * 0.15
-      this.version.y = this.game.config.height * 0.4
-      this.player.y = this.game.config.height * 0.335
+      this.version.x = this.game.config.width * 0.5 - this.title.width * 0.27
+      this.version.y = this.game.config.height * 0.35 + this.title.height * 0.3
+      this.player.y = this.game.config.height * 0.35 - this.title.height * .7
       this.player.x = this.game.config.width * 0.5 - this.title.width * 0.120
     }
 
@@ -238,13 +238,13 @@ class SceneMainMenu extends Phaser.Scene {
                 delay:180,
                 callback: function() {
                   if (animateText.repeatCount === 6){
-                    this.title.setText("| | | | | | | ||")
+                    this.title.setText("| | | | | | | | |")
                   }
                   if (animateText.repeatCount >= 2 && animateText.repeatCount < 6){
                     this.title.setText('T O M L I N S O N')
                   }
                   if (animateText.repeatCount === 1){
-                    this.title.setText("| | | | | | | ||")
+                    this.title.setText("| | | | | | | | |")
                   }
                   if (animateText.repeatCount === 0){
                     this.title.setText('M O O N L I N T S')
