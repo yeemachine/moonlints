@@ -43,8 +43,11 @@ body {
 /*   stroke:none; */
 }
 .radialValue{
-  margin-top:-80px;
-  font-weight:900;
+  position:absolute;
+  margin-top:-8px;
+  margin-left:120px;
+  font-size:24px;
+  width:200px;
 }
 .hide {
   opacity: 0;

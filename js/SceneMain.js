@@ -132,6 +132,10 @@ class SceneMain extends Phaser.Scene {
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
     this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+    this.keyUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
+    this.keyDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
+    this.keyLeft = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+    this.keyRight = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
     this.enemies = this.add.group();
@@ -320,16 +324,16 @@ class SceneMain extends Phaser.Scene {
         }
       }
  
-      if (this.keyW.isDown) {
+      if (this.keyW.isDown || this.keyUp.isDown) {
         this.player.moveUp();
       }
-      else if (this.keyS.isDown) {
+      else if (this.keyS.isDown || this.keyDown.isDown) {
         this.player.moveDown();
       }
-      if (this.keyA.isDown) {
+      if (this.keyA.isDown || this.keyLeft.isDown) {
         this.player.moveLeft();
       }
-      else if (this.keyD.isDown) {
+      else if (this.keyD.isDown || this.keyRight.isDown) {
         this.player.moveRight();
       }
 
