@@ -11,6 +11,7 @@ class SceneGameOver extends Phaser.Scene {
     this.title = this.add.text(this.game.config.width * 0.5, this.game.config.height * 0.35, "T R Y A G A I N", {
       fontFamily: 'Blue Owl',
       fontSize: 128,
+      baselineY: 0.085,
       fontStyle: 'bold',
       color: '#ffffff',
       align: 'center'

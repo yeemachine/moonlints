@@ -120,7 +120,7 @@ class SceneMain extends Phaser.Scene {
             scale: { start: 0.3, end: 0 },
             blendMode: 'ADD',
             delay:500,
-            frequency:200
+            frequency:100
         });
         this.emitter.startFollow(this.player)
         this.children.bringToTop(this.player)
@@ -203,8 +203,6 @@ class SceneMain extends Phaser.Scene {
         var result = (pad+n).slice(-pad.length);
         enemy.setData('hp', enemy_hp - 1)
         enemy.scene.score.setText(result)
-        
-
         
         if(!enemy.getData("isDead") && enemy.getData('type') === 'SingleLetter' && enemy.getData('animating') === false){
           enemy.setData('animating',true)
