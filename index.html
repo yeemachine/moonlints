@@ -48,13 +48,11 @@
     <script>
     magicblue.init('.connect-button')
 
-
     //Device Connected
     magicblue.on('connected', (deviceName) => {
       console.log(deviceName + ' is connected.');
       document.querySelector('.devices').innerHTML = Object.keys(magicblue.devices).join(', ')
     });
-
       
     document.querySelector('.connect-button').addEventListener('mouseover',()=>{
       document.querySelector('.radialValue').innerHTML = 'Connect Lightbulb'
@@ -62,12 +60,6 @@
     document.querySelector('.connect-button').addEventListener('mouseout',()=>{
       document.querySelector('.radialValue').innerHTML = ''
     })
-
-
-
-
-
-
     </script>
     <script src="plugins/joystick.js"></script>
     <script src="js/Entities.js"></script>
