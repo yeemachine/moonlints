@@ -25,7 +25,7 @@ class SceneMain extends Phaser.Scene {
 
   }
   create() {
-    magicblue.setWhite(255)
+    magicblue.setWhite(127)
     
     this.anims.create({
       key: "sprEnemy0",
@@ -246,7 +246,7 @@ class SceneMain extends Phaser.Scene {
       let lightDim = player.scene.time.addEvent({
       delay:1000,
       callback: function() {
-        magicblue.setWhite((player_hp-1))
+        magicblue.setWhite((player_hp/2-1))
       }
       })  
       
